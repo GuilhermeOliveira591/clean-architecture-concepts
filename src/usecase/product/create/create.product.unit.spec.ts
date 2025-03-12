@@ -16,9 +16,9 @@ const inputError = {
 
 const MockRepository = () => {
   return {
-    find: jest.fn().mockReturnValue(Promise.resolve(input)),
+    find: jest.fn(),
     findAll: jest.fn(),
-    create: jest.fn(),
+    create: jest.fn().mockReturnValue(Promise.resolve(input)),
     update: jest.fn(),
   };
 };
