@@ -33,7 +33,7 @@ describe("Test find product use case", () => {
         const productRepository = MockRepository();
         const findProductUseCase = new FindProductUseCase(productRepository);
 
-        const result = await findProductUseCase.find(input);
+        const result = await findProductUseCase.execute(input);
 
         expect(result).toEqual({
             id: expect.any(String),
@@ -46,7 +46,7 @@ describe("Test find product use case", () => {
         const productRepository = MockRepository();
         const findProductUseCase = new FindProductUseCase(productRepository);
 
-        const result = await findProductUseCase.find(input);
+        const result = await findProductUseCase.execute(input);
 
         expect(result).toEqual({
             id: expect.any(String),

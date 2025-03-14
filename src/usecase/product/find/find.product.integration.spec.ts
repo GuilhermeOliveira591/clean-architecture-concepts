@@ -42,7 +42,7 @@ describe("Test find product use case", () => {
 
         await productRepository.create(product);
 
-        const result = await usecase.find(input);
+        const result = await usecase.execute(input);
 
         expect(result).toEqual(output);
     });
@@ -55,7 +55,7 @@ describe("Test find product use case", () => {
 
         await productRepository.create(product);
 
-        expect(usecase.find(input)).rejects.toThrow();
+        expect(usecase.execute(input)).rejects.toThrow();
     });
 
 
