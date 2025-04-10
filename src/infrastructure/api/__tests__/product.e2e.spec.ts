@@ -63,5 +63,21 @@ describe("E2E test for product", () => {
       expect(listResponse.status).toBe(200);
       expect(listResponse.body.products.length).toBe(2);
 
+      const listResponseXML = await request(app)
+          .get("/product")
+          .set("Accept", "application/xml")
+          .send();
+      
+          expect(listResponseXML.status).toBe(200);
+          expect(listResponseXML.text).toContain(`<?xml version="1.0" encoding="UTF-8"?>`);
+          expect(listResponseXML.text).toContain(`<products>`);
+          expect(listResponseXML.text).toContain(`<product>`);
+          expect(listResponseXML.text).toContain(`<name>Bicicleta aro 25</name>`);
+          expect(listResponseXML.text).toContain(`<price>2500</price>`);
+          expect(listResponseXML.text).toContain(`</product>`);
+          expect(listResponseXML.text).toContain(`<name>Liquidificador Novo</name>`);
+          expect(listResponseXML.text).toContain(`<price>195.5</price>`);
+          expect(listResponseXML.text).toContain(`</products>`);
+
   });
 });
